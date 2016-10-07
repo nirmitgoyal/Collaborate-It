@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app="ace_app">
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -9,6 +9,7 @@
     <link href="../static/css/bootstrap.min.css" rel="stylesheet">
     <link href="../static/css/index.css" rel="stylesheet">
     <link href="../static/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/default.min.css">
 </head>
 
 <body>
@@ -23,7 +24,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Project name</a>
+                    <a class="navbar-brand" href="#">Collaborate-It</a>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
@@ -34,12 +35,19 @@
                 </div>
             </div>
         </nav>
-        <div class="starter-template">
-            <!-- <p>Please code here</p> -->
+        <div class="starter-template" ng-app="ace_app">
             <br>
             <div class="row">
                 <div class="col-sm-9">
-                    <div ui-ace="{      useWrapMode : true   }">Ace here</div>
+                    <!-- <div ui-ace hljs hljs-no-escape> -->
+                    <!-- <pre><code class="cpp"></code></pre> -->
+                    <div ui-ace >#include&lt;bits/stdc++.h&gt;;
+using namespace std;
+int main() 
+{ 
+    return 0; 
+}
+</div>
                 </div>
                 <div class="col-sm-3">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -54,8 +62,14 @@
     <script src="../static/js/bootstrap.min.js"></script>
     <script src="../static/js/angular.min.js"></script>
     <script src="../static/js/angular-route.min.js"></script>
+    <!-- <script src="../static/js/twilight.js"></script>     -->
     <script src="../static/js/ace.js"></script>
     <script src="../static/js/ui-ace.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+    <script src="http://pc035860.github.io/angular-highlightjs/angular-highlightjs.min.js"></script>
+    <!--     <script>
+    hljs.initHighlightingOnLoad();
+    </script> -->
     <script src="../static/js/app.js"></script>
 </body>
 
