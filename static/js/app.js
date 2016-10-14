@@ -1,9 +1,44 @@
-angular.module('ace_app', ['ui.ace','hljs']);
+var myapp = angular
+    .module('myapp', ['ui.ace', 'hljs', 'ngRoute']);
+// .config(config);
 
+// function config($routeProvider) {
+myapp.config(function($routeProvider) {
+    $routeProvider
+        .when("/", {
+            templateUrl: "code.html",
+            controller: "codeCtrl"
+        })
+        .when("/code", {
+            templateUrl: "code.html",
+            controller: "codeCtrl"
 
+        })
+        .when("/login", {
+            templateUrl: "login.html",
+            controller: "loginCtrl"
+        })
+        .when("/register", {
+            templateUrl: "register.html",
+            controller: "registerCtrl"
+        })
+        .when("/about", {
+            templateUrl: "about.html",
+            controller: "aboutCtrl"
+        })
+        .otherwise({
+            template: "not_found_404.html"
+        });
+});
 
+myapp.controller("codeCtrl", function($scope) {
+    // $scope.msg = "";
+});
 
+myapp.controller("loginCtrl", function($scope) {
+    // $scope.msg = "";
+});
 
-
-
-
+myapp.controller("aboutCtrl", function($scope) {
+    // $scope.msg = "";
+});

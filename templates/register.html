@@ -1,0 +1,44 @@
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="panel panel-login">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <a href="#login" id="login-form-link">Login</a>
+                    </div>
+                    <div class="col-xs-6">
+                        <a href="#register" class="active"  id="register-form-link">Register</a>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form id="register-form" action="" method="post" role="form"  autocomplete="on">
+                            <div class="form-group">
+                                <input type="text" name="username" id="username" tabindex="1" class="form-control" title="Minimum 8 Characters, only letters  and numbers" pattern="^[A-Za-z0-9]{4,40}$" placeholder="Username" onkeyup="validateUsername(this)" value="" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="" required autocomplete autofocus>
+                            </div>
+                            <div class="form-group">
+                                <input id="password" class="form-control" tabindex="2" name="password" type="password" pattern="^\S{6,}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Must have at least 6 characters' : ''); if(this.checkValidity()) form.password_two.pattern = this.value;" placeholder="Password" required>
+                            </div>
+                            <div class="form-group">
+                                <input id="password_two" class="form-control" tabindex="2" name="password_two" type="password" pattern="^\S{6,}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Please enter the same Password as above' : '');" placeholder="Verify Password" required>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-sm-6 col-sm-offset-3">
+                                        <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
