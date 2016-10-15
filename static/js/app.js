@@ -27,7 +27,7 @@ myapp.config(function($routeProvider) {
             controller: "aboutCtrl"
         })
         .otherwise({
-            template: "not_found_404.html"
+            templateUrl: "not_found_404.html"
         });
 });
 
