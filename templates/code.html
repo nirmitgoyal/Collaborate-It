@@ -5,10 +5,19 @@
     <div class="col-sm-9">
         <!-- <div ui-ace hljs hljs-no-escape> -->
         <!-- <pre><code class="cpp"></code></pre> -->
-        <div ui-ace>#include&lt;bits/stdc++.h&gt;; &#13;&#10;using namespace std; &#13;&#10;int main() &#13;&#10;{ &#13;&#10;   return 0; &#13;&#10;}
+        <div ui-ace="{mode: 'c_cpp', 
+   require: ['ace/ext/language_tools'],
+   advanced: {
+      enableSnippets: true,
+      enableBasicAutocompletion: true,
+      enableLiveAutocompletion: true,
+      setHighlightActiveLine:true
+  }}">#include&lt;bits/stdc++.h&gt;; &#13;&#10;using namespace std; &#13;&#10;int main() &#13;&#10;{ &#13;&#10; return 0; &#13;&#10;}
+        </div>
+        <!-- <div ui-ace>#include&lt;bits/stdc++.h&gt;; &#13;&#10;using namespace std; &#13;&#10;int main() &#13;&#10;{ &#13;&#10;   return 0; &#13;&#10;} </div>-->
+    </div> 
+        <div class="col-sm-3">
+            CHAT
         </div>
     </div>
-    <div class="col-sm-3">
-        CHAT
-    </div>
-</div>
+    <!-- #include&lt;bits/stdc++.h&gt;; &#13;&#10;using namespace std; &#13;&#10;int main() &#13;&#10;{ &#13;&#10;   return 0; &#13;&#10;} -->

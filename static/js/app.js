@@ -1,5 +1,5 @@
 var myapp = angular
-    .module('myapp', ['ui.ace', 'hljs', 'ngRoute','vcRecaptcha']);
+    .module('myapp', ['ui.ace', 'ngRoute','vcRecaptcha']);
 // .config(config);
 
 // function config($routeProvider) {
