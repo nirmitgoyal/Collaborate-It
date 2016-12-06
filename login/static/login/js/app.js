@@ -6,7 +6,8 @@ var myapp = angular
 myapp.config(function($routeProvider) {
     $routeProvider
         .when("/", {
-            templateUrl: "code.html",
+            // templateUrl: "/templates/login/code.html",
+            templateUrl: "/templates/login/code.html",            
             controller: "codeCtrl"
         })
         .when("/code", {

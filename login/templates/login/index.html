@@ -3,14 +3,15 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Collaborate-It | Online Code Collaborator</title>
+    <title>Collaborate-It | Real Time Code Collaborator</title>
     <meta name="description" content="">
     <meta name="author" content="">
-    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../static/css/index.css" rel="stylesheet">
-    <link href="../static/css/style.css" rel="stylesheet">
-    <link href="../static/css/login.css" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/default.min.css"> -->
+    <!-- {% load staticfiles %} -->
+    <!-- <link href="../static/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link href="/static/login/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="{% static 'login/css/bootstrap.min.css' %}" rel="stylesheet"> -->
+    <link href="/static/login/css/style.css" rel="stylesheet">
+    <link href="/static/login/css/login.css" rel="stylesheet">
 </head>
 
 <body ng-app="myapp">
@@ -48,21 +49,21 @@
     </div>
     <!-- </div> -->
     <!-- /.container -->
-    <script src="../static/js/angular.min.js"></script>
-    <script src="../static/js/angular-route.min.js"></script>
-    <script src="../static/js/jquery-3.1.1.min.js"></script>
-    <script src="../static/js/bootstrap.min.js"></script>
-    <script src="../static/js/require.js"></script>
-    <!-- <script src="../static/js/mode_cpp.js"></script> -->
-    <!-- <script src="../static/js/original_ace.js"></script> -->
-    <script src="../static/js/ace.js"></script>
-    <script src="../static/js/ui-ace.min.js"></script>
-    <script src="../static/js/mode-c_cpp.js"></script>
-    <script src="../static/js/ext-language_tools.js"></script>
-    <script src="../static/js/login.js"></script>
-    <script src="../static/js/app.js"></script>
+    <!-- {% load staticfiles %} -->
+    <!-- <script src="../static/js/angular.min.js"></script> -->
+    <script src="/static/login/js/angular.min.js"></script>
+    <script src="/static/login/js/angular-route.min.js"></script>
+    <script src="/static/login/js/jquery-3.1.1.min.js"></script>
+    <script src="/static/login/js/bootstrap.min.js"></script>
+    <script src="/static/login/js/require.js"></script>
+    <script src="/static/login/js/ace.js"></script>
+    <script src="/static/login/js/ui-ace.min.js"></script>
+    <script src="/static/login/js/mode-c_cpp.js"></script>
+    <script src="/static/login/js/ext-language_tools.js"></script>
+    <script src="/static/login/js/login.js"></script>
+    <script src="/static/login/js/app.js"></script>
     <script src="https://www.google.com/recaptcha/api.js?onload=vcRecaptchaApiLoaded&render=explicit" async defer></script>
-    <script src="../static/js/angular-recaptcha.min.js"></script>
+    <script src="/static/login/js/angular-recaptcha.min.js"></script>
 </body>
 
 </html>
