@@ -1,3 +1,14 @@
+$ mkvirtualenv thinkster-djangular
+$ cd thinkster-django-angular-boilerplate/
+$ pip install -r requirements.txt
+$ npm install -g bower
+$ npm install
+$ bower install
+$ python manage.py migrate
+$ python manage.py runserver
+
+
+
 find . -path "*/migrations/*.py" -not -name "__init__.py" -delete
 find . -path "*/migrations/*.pyc"  -delete
 delete db file
