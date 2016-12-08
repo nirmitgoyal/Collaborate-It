@@ -1,4 +1,40 @@
 <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <h1>Register</h1>
+        <div class="panel panel-login">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form id="register-form" ng-submit="vm.register()" role="form" autocomplete="on">
+                            <div class="form-group">
+                                <label for="register__username">Username</label>
+                                <input type="text" name="username" id="username" tabindex="1" id="register__username" ng-model="vm.username" class="form-control" title="Minimum 8 Characters, only letters  and numbers" pattern="^[A-Za-z0-9]{4,40}$" placeholder="Username" onkeyup="validateUsername(this)" value="" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="register__email">Email</label>
+                                <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" id="register__email" ng-model="vm.email" value="" required autocomplete autofocus>
+                            </div>
+                            <div class="form-group">
+                                <label for="register__password">Password</label>
+                                <input id="password" class="form-control" id="register__password" ng-model="vm.password" tabindex="2" name="password" type="password" pattern="^\S{6,}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Must have at least 6 characters' : ''); if(this.checkValidity()) form.password_two.pattern = this.value;" placeholder="Password" required>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-sm-6 col-sm-offset-3">
+                                        <button type="submit" class="btn btn-primary btn-lg btn-block">Register</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 
+
+<div class="row">
   <div class="col-md-4 col-md-offset-4">
     <h1>Register</h1>
 
@@ -25,4 +61,4 @@
       </form>
     </div>
   </div>
-</div>
+</div> -->

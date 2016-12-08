@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html ng-app="thinkster">
+
 <head>
+    <meta charset="utf-8">
     <title>Collaborate-It | Real Time Code Collaborator</title>
-
-
-  <base href="/" />
-
-  {% include 'stylesheets.html' %}
+    <base href="/" />
+   {% include 'stylesheets.html' %}
 </head>
 
 <body>
-  {% include 'navbar.html' %}
-
-  <div class="container-fluid">
+    {% include 'navbar.html' %}
+    <!-- <div class="ng-view"></div> -->
+      <div class="container-fluid" id="starter-template">
     <div class="row">
       <div class="col-xs-12 ng-view"></div>
     </div>
   </div>
-
-  {% include 'javascripts.html' %}
+    {% include 'javascripts.html' %}
 </body>
+
 </html>

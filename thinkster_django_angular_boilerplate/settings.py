@@ -58,14 +58,32 @@ WSGI_APPLICATION = 'thinkster_django_angular_boilerplate.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
-
-import dj_database_url
+# from django.core.exceptions import ImproperlyConfigured
+ 
+# def get_env_variable(var_name):
+#     try:
+#         return os.environ[var_name]
+#     except KeyError:
+#         error_msg = "Set the %s environment variable" % var_name
+#         raise ImproperlyConfigured(error_msg)
+# import dj_database_url
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default='sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'django_db',
+        'USER': 'admin',
+        'PASSWORD': 'password',
+        'HOST': '',
+        'PORT': '',
+    }
 }
+
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default='sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
+#     )
+# }
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
