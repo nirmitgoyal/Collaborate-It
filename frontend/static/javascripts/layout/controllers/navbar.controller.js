@@ -6,6 +6,7 @@
     'use strict';
 
     angular
+        // .module('thinkster.layout.controllers',['thinkster.authentication.services'])
         .module('thinkster.layout.controllers')
         .controller('NavbarController', NavbarController);
 
@@ -17,7 +18,12 @@
     function NavbarController($scope, Authentication) {
         var vm = this;
 
-        vm.logout = logout;
+        // vm = {
+        //         logout : logout,
+        //         isAuthenticated : isAuthenticated
+        //     };
+            vm.logout = logout;
+            vm.isAuthenticated = isAuthenticated;
 
         /**
          * @name logout
@@ -25,7 +31,15 @@
          * @memberOf thinkster.layout.controllers.NavbarController
          */
         function logout() {
+            // alert("logout");
             Authentication.logout();
+        }
+
+        function isAuthenticated() {
+            // alert(Authentication.isAuthenticated());
+            // console.log(Authentication.isAuthenticated());
+            return Authentication.isAuthenticated();
+            // return "1";
         }
     }
 })();

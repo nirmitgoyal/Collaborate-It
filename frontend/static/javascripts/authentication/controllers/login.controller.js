@@ -29,8 +29,13 @@
         function activate() {
             // If the user is authenticated, they should not be here.
             if (Authentication.isAuthenticated()) {
+                // alert("logged in");
                 $location.url('/');
             }
+            else{
+                // alert("not logged in");
+            }
+
         }
 
         /**

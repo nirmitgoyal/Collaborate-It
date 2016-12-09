@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'rest_framework',
     'compressor',
+    'corsheaders',
     'authentication',
 )
 
@@ -48,6 +49,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
@@ -55,7 +57,10 @@ ROOT_URLCONF = 'thinkster_django_angular_boilerplate.urls'
 
 WSGI_APPLICATION = 'thinkster_django_angular_boilerplate.wsgi.application'
 
-
+CORS_ORIGIN_WHITELIST = (
+    'localhost:8000',
+    '127.0.0.1:8000'
+)
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 # from django.core.exceptions import ImproperlyConfigured

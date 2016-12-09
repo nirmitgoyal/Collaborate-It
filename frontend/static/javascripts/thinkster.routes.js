@@ -15,8 +15,13 @@
 
         $routeProvider
             .when('/', {
-                controller: '',
-                // controllerAs: 'vm',
+                controller: 'SyncController',
+                controllerAs: 'vm',
+                templateUrl: '/static/templates/authentication/code.html'
+            })
+            .when('/code', {
+                controller: 'SyncController',
+                controllerAs: 'vm',
                 templateUrl: '/static/templates/authentication/code.html'
             })
             .when('/register', {

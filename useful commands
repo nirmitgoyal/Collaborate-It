@@ -1,5 +1,4 @@
 $ mkvirtualenv thinkster-djangular
-$ cd thinkster-django-angular-boilerplate/
 $ pip install -r requirements.txt
 $ npm install -g bower
 $ npm install
@@ -12,3 +11,13 @@ $ python manage.py runserver
 find . -path "*/migrations/*.py" -not -name "__init__.py" -delete
 find . -path "*/migrations/*.pyc"  -delete
 delete db file
+
+
+
+
+run :
+workon thinkster-djangular
+python manage.py runserver
+
+
+frontend: 8000

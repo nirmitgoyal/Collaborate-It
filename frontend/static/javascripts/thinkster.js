@@ -8,7 +8,8 @@
             'thinkster.authentication',
             'thinkster.layout',
             'ui.ace',
-            'vcRecaptcha'
+            'vcRecaptcha',
+            'angular-md5'
         ]);
 
     angular

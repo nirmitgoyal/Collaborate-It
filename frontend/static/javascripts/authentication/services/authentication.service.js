@@ -15,11 +15,13 @@
      * @namespace Authentication
      * @returns {Factory}
      */
+
     function Authentication($cookies, $http) { //a factory
         /**
          * @name Authentication
          * @desc The Factory to be returned
          */
+        var BASE_URL = "http://localhost:8001";
         var Authentication = {
             getAuthenticatedAccount: getAuthenticatedAccount,
             isAuthenticated: isAuthenticated,
@@ -43,7 +45,7 @@
          * @memberOf thinkster.authentication.services.Authentication
          */
         function register(email, password, username) {
-            return $http.post('/api/v1/accounts/', {
+            return $http.post(BASE_URL + '/api/v1/accounts/', {
                 username: username,
                 password: password,
                 email: email
@@ -117,7 +119,7 @@
         }
 
         function login(email, password) {
-            return $http.post('/api/v1/auth/login/', {
+            return $http.post(BASE_URL + '/api/v1/auth/login/', {
                 email: email,
                 password: password
             }).then(loginSuccessFn, loginErrorFn);
@@ -127,6 +129,10 @@
              * @desc Set the authenticated account and redirect to index
              */
             function loginSuccessFn(data, status, headers, config) {
+                console.log(data.data);
+                // alert("h");
+                // $scope.user = data.data;
+                // console.log($scope.user);
                 Authentication.setAuthenticatedAccount(data.data);
 
                 window.location = '/';
@@ -147,17 +153,18 @@
          * @memberOf thinkster.authentication.services.Authentication
          */
         function logout() {
-            return $http.post('/api/v1/auth/logout/')
-                .then(logoutSuccessFn, logoutErrorFn);
-
+            // alert("here");
+            // return $http.post(BASE_URL + '/api/v1/auth/logout/')
+            //     .then(logoutSuccessFn, logoutErrorFn);
+            Authentication.unauthenticate();
+            window.location = '/';
             /**
              * @name logoutSuccessFn
              * @desc Unauthenticate and redirect to index with page reload
              */
             function logoutSuccessFn(data, status, headers, config) {
-                Authentication.unauthenticate();
+                // Authentication.unauthenticate();
 
-                window.location = '/';
             }
 
             /**
