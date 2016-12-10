@@ -10,8 +10,12 @@
   "license": "ISC",
   "dependencies": {
     "compression": "^1.6.2",
+    "cookie": "^0.3.1",
     "express": "^4.14.0",
     "ip": "^1.1.4",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "querystring": "^0.2.0",
+    "redis": "^2.6.3",
+    "socket.io": "^1.7.1"
   }
 }

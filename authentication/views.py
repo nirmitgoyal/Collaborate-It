@@ -14,7 +14,7 @@ from rest_framework import status, views
 from rest_framework.response import Response
 import ipdb
 from django.views.decorators.csrf import csrf_exempt
-
+import redis
 from django.http import HttpResponse
 
 
@@ -95,6 +95,8 @@ def save_code(request):
             myobject = get_object_or_404(Code, pk=url)
             myobject.code = code
             myobject.save()
+            r = redis.StrictRedis(host='localhost', port=6379, db=0)
+            r.publish('code',code)
             return HttpResponse(json.dumps({
                 'status': 'Successful',
                 'message': 'new code saved'
