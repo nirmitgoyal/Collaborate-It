@@ -2,24 +2,24 @@
     'use strict';
 
     angular
-        .module('thinkster', [
-            'thinkster.config',
-            'thinkster.routes',
-            'thinkster.authentication',
-            'thinkster.layout',
+        .module('collaborate', [
+            'collaborate.config',
+            'collaborate.routes',
+            'collaborate.authentication',
+            'collaborate.layout',
             'ui.ace',
             'vcRecaptcha',
             'angular-md5'
         ]);
 
     angular
-        .module('thinkster.config', []);
+        .module('collaborate.config', []);
 
     angular
-        .module('thinkster.routes', ['ngRoute']);
+        .module('collaborate.routes', ['ngRoute']);
 
     angular
-        .module('thinkster')
+        .module('collaborate')
         .run(run);
 
     run.$inject = ['$http'];

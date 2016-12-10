@@ -1,12 +1,12 @@
 /**
  * Authentication
- * @namespace thinkster.authentication.services
+ * @namespace collaborate.authentication.services
  */
 (function() {
     'use strict';
 
     angular
-        .module('thinkster.authentication.services')
+        .module('collaborate.authentication.services')
         .factory('Authentication', Authentication);
 
     Authentication.$inject = ['$cookies', '$http','$cookieStore'];
@@ -42,7 +42,7 @@
          * @param {string} password The password entered by the user
          * @param {string} username The username entered by the user
          * @returns {Promise}
-         * @memberOf thinkster.authentication.services.Authentication
+         * @memberOf collaborate.authentication.services.Authentication
          */
         function register(email, password, username) {
             return $http.post(BASE_URL + '/api/v1/accounts/', {
@@ -72,7 +72,7 @@
          * @name getAuthenticatedAccount
          * @desc Return the currently authenticated account
          * @returns {object|undefined} Account if authenticated, else `undefined`
-         * @memberOf thinkster.authentication.services.Authentication
+         * @memberOf collaborate.authentication.services.Authentication
          */
         function getAuthenticatedAccount() {
             if (!$cookies.authenticatedAccount) {
@@ -85,7 +85,7 @@
          * @name isAuthenticated
          * @desc Check if the current user is authenticated
          * @returns {boolean} True is user is authenticated, else false.
-         * @memberOf thinkster.authentication.services.Authentication
+         * @memberOf collaborate.authentication.services.Authentication
          */
         function isAuthenticated() {
             return !!$cookies.authenticatedAccount;
@@ -95,7 +95,7 @@
          * @desc Stringify the account object and store it in a cookie
          * @param {Object} user The account object to be stored
          * @returns {undefined}
-         * @memberOf thinkster.authentication.services.Authentication
+         * @memberOf collaborate.authentication.services.Authentication
          */
         function setAuthenticatedAccount(account) {
             $cookies.authenticatedAccount = JSON.stringify(account);
@@ -106,13 +106,13 @@
          * @param {string} email The email entered by the user
          * @param {string} password The password entered by the user
          * @returns {Promise}
-         * @memberOf thinkster.authentication.services.Authentication
+         * @memberOf collaborate.authentication.services.Authentication
          */
         /**
          * @name unauthenticate
          * @desc Delete the cookie where the user object is stored
          * @returns {undefined}
-         * @memberOf thinkster.authentication.services.Authentication
+         * @memberOf collaborate.authentication.services.Authentication
          */
         function unauthenticate() {
             delete $cookies.authenticatedAccount;
@@ -152,7 +152,7 @@
          * @name logout
          * @desc Try to log the user out
          * @returns {Promise}
-         * @memberOf thinkster.authentication.services.Authentication
+         * @memberOf collaborate.authentication.services.Authentication
          */
         function logout() {
             // alert("here");

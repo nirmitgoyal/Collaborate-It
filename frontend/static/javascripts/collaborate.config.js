@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('thinkster.config')
+    .module('collaborate.config')
     .config(config);
 
   config.$inject = ['$locationProvider'];

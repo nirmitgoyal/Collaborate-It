@@ -39,7 +39,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/nirmit/Desktop/thinkster-django-angular-boilerplate/thinkster-djangular"
+VIRTUAL_ENV="/home/nirmit/Desktop/collaborate-django-angular-boilerplate/collaborate-djangular"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

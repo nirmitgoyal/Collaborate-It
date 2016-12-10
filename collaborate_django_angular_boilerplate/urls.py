@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, url
 from authentication.views import LogoutView
 
-from thinkster_django_angular_boilerplate.views import IndexView
+from collaborate_django_angular_boilerplate.views import IndexView
 from rest_framework_nested import routers
 from django.conf.urls import include
 from authentication import views

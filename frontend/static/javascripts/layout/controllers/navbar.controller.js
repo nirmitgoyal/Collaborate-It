@@ -1,13 +1,13 @@
 /**
  * NavbarController
- * @namespace thinkster.layout.controllers
+ * @namespace collaborate.layout.controllers
  */
 (function() {
     'use strict';
 
     angular
-    // .module('thinkster.layout.controllers',['thinkster.authentication.services'])
-        .module('thinkster.layout.controllers')
+    // .module('collaborate.layout.controllers',['collaborate.authentication.services'])
+        .module('collaborate.layout.controllers')
         .controller('NavbarController', NavbarController);
 
     NavbarController.$inject = ['$scope', 'Authentication', '$cookieStore'];
@@ -25,7 +25,7 @@
         /**
          * @name logout
          * @desc Log the user out
-         * @memberOf thinkster.layout.controllers.NavbarController
+         * @memberOf collaborate.layout.controllers.NavbarController
          */
         function logout() {
             // alert("logout");

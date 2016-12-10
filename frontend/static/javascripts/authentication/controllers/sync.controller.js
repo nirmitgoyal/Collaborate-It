@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('thinkster.authentication.controllers')
+        .module('collaborate.authentication.controllers')
         .controller('SyncController', SyncController);
 
     SyncController.$inject = ['$location', '$scope', 'Authentication', 'md5', '$cookies', '$cookieStore', '$http'];
@@ -53,7 +53,7 @@
         /**
          * @name activate
          * @desc Actions to be performed when this controller is instantiated
-         * @memberOf thinkster.authentication.controllers.RegisterController
+         * @memberOf collaborate.authentication.controllers.RegisterController
          */
 
         function activate() {
@@ -68,7 +68,7 @@
         /**
          * @name register
          * @desc Register a new user
-         * @memberOf thinkster.authentication.controllers.RegisterController
+         * @memberOf collaborate.authentication.controllers.RegisterController
          */
         function login() {
             console.log(Authentication.login(vm.email, vm.password, function(data) {

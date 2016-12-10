@@ -32,7 +32,7 @@ end
 # unset irrelevant variables
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/nirmit/Desktop/thinkster-django-angular-boilerplate/thinkster-djangular"
+set -gx VIRTUAL_ENV "/home/nirmit/Desktop/collaborate-django-angular-boilerplate/collaborate-djangular"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

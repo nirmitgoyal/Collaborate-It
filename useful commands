@@ -1,8 +1,9 @@
-$ mkvirtualenv thinkster-djangular
+$ mkvirtualenv collaborate-djangular
 $ pip install -r requirements.txt
-$ npm install -g bower
+$ sudo npm install -g bower
 $ npm install
-$ bower install
+$ sudo bower install --allow-root
+python manage.py makemigrations
 $ python manage.py migrate
 $ python manage.py runserver
 
@@ -16,7 +17,7 @@ delete db file
 
 
 run :
-workon thinkster-djangular
+workon collaborate-djangular
 python manage.py runserver
 
 

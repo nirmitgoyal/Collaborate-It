@@ -2,14 +2,14 @@
   'use strict';
 
   angular
-    .module('thinkster.authentication', [
-      'thinkster.authentication.controllers',
-      'thinkster.authentication.services'
+    .module('collaborate.authentication', [
+      'collaborate.authentication.controllers',
+      'collaborate.authentication.services'
     ]);
 
   angular
-    .module('thinkster.authentication.controllers', ['ngCookies']);
+    .module('collaborate.authentication.controllers', ['ngCookies']);
 
   angular
-    .module('thinkster.authentication.services', ['ngCookies']);
+    .module('collaborate.authentication.services', ['ngCookies']);
 })();
