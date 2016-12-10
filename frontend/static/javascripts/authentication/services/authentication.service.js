@@ -9,14 +9,14 @@
         .module('thinkster.authentication.services')
         .factory('Authentication', Authentication);
 
-    Authentication.$inject = ['$cookies', '$http'];
+    Authentication.$inject = ['$cookies', '$http','$cookieStore'];
 
     /**
      * @namespace Authentication
      * @returns {Factory}
      */
 
-    function Authentication($cookies, $http) { //a factory
+    function Authentication($cookies, $http,$cookieStore) { //a factory
         /**
          * @name Authentication
          * @desc The Factory to be returned
@@ -118,7 +118,7 @@
             delete $cookies.authenticatedAccount;
         }
 
-        function login(email, password) {
+        function login(email, password, cb) {
             return $http.post(BASE_URL + '/api/v1/auth/login/', {
                 email: email,
                 password: password
@@ -130,9 +130,9 @@
              */
             function loginSuccessFn(data, status, headers, config) {
                 console.log(data.data);
-                // alert("h");
-                // $scope.user = data.data;
-                // console.log($scope.user);
+                $cookieStore.put('email', data.data.email);
+                $cookieStore.put('username', data.data.username);
+                // cb(data.data);
                 Authentication.setAuthenticatedAccount(data.data);
 
                 window.location = '/';
@@ -143,6 +143,8 @@
              * @desc Log "Epic failure!" to the console
              */
             function loginErrorFn(data, status, headers, config) {
+                console.log(data.data);
+                // cb(data.data);
                 console.error('Epic failure!');
             }
         }

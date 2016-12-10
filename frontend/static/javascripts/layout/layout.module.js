@@ -7,5 +7,5 @@
     ]);
 
   angular
-    .module('thinkster.layout.controllers', []);
+    .module('thinkster.layout.controllers', ['ngCookies']);
 })();

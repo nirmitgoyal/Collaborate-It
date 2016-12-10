@@ -8,9 +8,13 @@ from authentication.serializers import AccountSerializer
 import json
 
 from django.contrib.auth import authenticate, login
-
+from .models import Code
 from rest_framework import status, views
 from rest_framework.response import Response
+import ipdb
+from django.views.decorators.csrf import csrf_exempt
+
+from django.http import HttpResponse
 
 
 class AccountViewSet(viewsets.ModelViewSet):
@@ -42,6 +46,7 @@ class AccountViewSet(viewsets.ModelViewSet):
 
 
 class LoginView(views.APIView):
+
     def post(self, request, format=None):
         data = json.loads(request.body)
 
@@ -76,3 +81,32 @@ class LogoutView(views.APIView):
         logout(request)
 
         return Response({}, status=status.HTTP_204_NO_CONTENT)
+
+@csrf_exempt
+def save_code(request):
+    ipdb.set_trace()
+    if request.method == "POST":
+        url = request.POST['url']
+        code = request.POST['code']
+        email = request.POST['email']
+        try:
+            myobject = get_object_or_404(Code, pk=url)
+        except (KeyError, Code.DoesNotExist):
+            myobject = Code(pk=url, code=code, email=email)
+            myobject.save(force_insert=True)
+            return HttpResponse(json.dumps({
+                'status': 'Created',
+                'message': 'url created in DB'
+            }))
+        else:
+            myobject.code = code
+            myobject.save()
+            return HttpResponse(json.dumps({
+                'status': 'Successful',
+                'message': 'new code saved'
+            }))
+    else:
+        return HttpResponse(json.dumps({
+            'status': 'Forbidden',
+            'message': 'Only POST allowed'
+        }))

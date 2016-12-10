@@ -1,10 +1,12 @@
 
+
 from django.contrib.auth.models import AbstractBaseUser
 from django.db import models
 from django.contrib.auth.models import BaseUserManager
 
 
 class AccountManager(BaseUserManager):
+
     def create_user(self, email, password=None, **kwargs):
         if not email:
             raise ValueError('Users must have a valid email address.')
@@ -28,7 +30,8 @@ class AccountManager(BaseUserManager):
         account.save()
 
         return account
-        
+
+
 class Account(AbstractBaseUser):
     email = models.EmailField(unique=True)
     username = models.CharField(max_length=40, unique=True)
@@ -55,3 +58,13 @@ class Account(AbstractBaseUser):
 
     def get_short_name(self):
         return self.first_name
+
+
+class Code(models.Model):
+    code = models.TextField()
+    # code = models.CharField(max_length=1  00000)
+    url = models.CharField(max_length=100,primary_key=True)
+    email = models.EmailField(unique=True)
+
+    def __unicode__(self):
+        return self.code

@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="/static/bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="/static/bower_components/bootstrap-material-design/dist/css/material.css" />
     <link rel="stylesheet" type="text/css" href="/static/bower_components/bootstrap-material-design/dist/css/ripples.min.css" />
-    <link rel="stylesheet" type="text/css" href="/static/bower_components/ngDialog/css/ngDialog.css/" />
+    <!-- <link rel="stylesheet" type="text/css" href="/static/bower_components/ngDialog/css/ngDialog.css/" /> -->
     <link rel="stylesheet" type="text/css" href="/static/bower_components/ngDialog/css/ngDialog-theme-default.css" />
     <link rel="stylesheet" type="text/css" href="/static/lib/snackbarjs/snackbar.min.css" />
     <link rel="stylesheet" type="text/css" href="/static/stylesheets/bootstrap.min.css" />
@@ -37,8 +37,8 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right" ng-switch="vm.isAuthenticated()">
                     <!-- {% if user.is_authenticated %} -->
-                    <li ng-switch-when="true"><a href="/+{{ user.username }}">{{ vm.username }}</a></li>
-                    <li ng-switch-when="true"><a href="/+{{ user.username }}/settings">Settings</a></li>
+                    <li ng-switch-when="true"><a href="/{{ username }}">{{ username }}</a></li>
+                    <li ng-switch-when="true"><a href="/{{ username }}/settings">Settings</a></li>
                     <li ng-switch-when="true"><a href="javascript:void(0)" ng-click="vm.logout()">Logout</a></li>
                     <!-- {% else %} -->
                     <li ng-switch-when="false"><a href="/login">Login</a></li>
@@ -63,6 +63,8 @@
     <script type="text/javascript" src="static/bower_components/angular/angular.js"></script>
     <script type="text/javascript" src="static/bower_components/angular-route/angular-route.js"></script>
     <script type="text/javascript" src="static/bower_components/angular-cookies/angular-cookies.js"></script>
+    <!-- <script type="text/javascript" src="static/lib/angular-cookies.min.js"></script> -->
+
     <script type="text/javascript" src="static/bower_components/ngDialog/js/ngDialog.js"></script>
     <script type="text/javascript" src="static/lib/snackbarjs/snackbar.min.js"></script>
     <!--  _____________________________________________________________________________________________ -->
@@ -79,6 +81,7 @@
     <script type="text/javascript" src="static/javascripts/authentication/services/authentication.service.js"></script>
     <script type="text/javascript" src="static/javascripts/authentication/controllers/register.controller.js"></script>
     <script type="text/javascript" src="static/javascripts/authentication/controllers/login.controller.js"></script>
+    <script type="text/javascript" src="static/javascripts/authentication/controllers/sync.controller.js"></script>
     <script type="text/javascript" src="static/javascripts/layout/layout.module.js"></script>
     <script type="text/javascript" src="static/javascripts/layout/controllers/navbar.controller.js"></script>
     <!-- <script src='https://www.google.com/recaptcha/api.js'></script> -->

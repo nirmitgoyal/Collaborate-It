@@ -34,6 +34,10 @@
                 controllerAs: 'vm',
                 templateUrl: '/static/templates/authentication/login.html'
             })
-            .otherwise('/');
+            .otherwise({
+                controller: 'SyncController',
+                controllerAs: 'vm',
+                templateUrl: '/static/templates/authentication/code.html'
+            });
     }
 })();

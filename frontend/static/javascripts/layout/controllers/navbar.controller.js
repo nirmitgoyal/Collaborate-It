@@ -6,25 +6,22 @@
     'use strict';
 
     angular
-        // .module('thinkster.layout.controllers',['thinkster.authentication.services'])
+    // .module('thinkster.layout.controllers',['thinkster.authentication.services'])
         .module('thinkster.layout.controllers')
         .controller('NavbarController', NavbarController);
 
-    NavbarController.$inject = ['$scope', 'Authentication'];
+    NavbarController.$inject = ['$scope', 'Authentication', '$cookieStore'];
 
     /**
      * @namespace NavbarController
      */
-    function NavbarController($scope, Authentication) {
+    function NavbarController($scope, Authentication, $cookieStore) {
         var vm = this;
-
-        // vm = {
-        //         logout : logout,
-        //         isAuthenticated : isAuthenticated
-        //     };
-            vm.logout = logout;
-            vm.isAuthenticated = isAuthenticated;
-
+        vm.logout = logout;
+        vm.isAuthenticated = isAuthenticated;
+        var username = $cookieStore.get('username');
+        console.log(username);
+        $scope.username = username;
         /**
          * @name logout
          * @desc Log the user out
