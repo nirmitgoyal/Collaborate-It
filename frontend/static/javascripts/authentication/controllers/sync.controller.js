@@ -39,10 +39,12 @@
             $scope.currentValue = $scope.aceSession.getDocument().getValue();
             var value = $scope.currentValue
             console.log(value);
-            $http.post(BASE_URL + '/api/v1/auth/code/', {
+            return $http.post(BASE_URL + '/api/v1/auth/code/', {
                 code: value,
                 email: email,
                 url: $scope.url
+            },{
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
             });
 
             // Set value

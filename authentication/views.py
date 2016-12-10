@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth import logout
 from rest_framework import permissions, viewsets
 
+from django.shortcuts import get_list_or_404, get_object_or_404
 from authentication.models import Account
 from authentication.permissions import IsAccountOwner
 from authentication.serializers import AccountSerializer
@@ -84,27 +85,27 @@ class LogoutView(views.APIView):
 
 @csrf_exempt
 def save_code(request):
-    ipdb.set_trace()
+    # ipdb.set_trace()
     if request.method == "POST":
-        url = request.POST['url']
-        code = request.POST['code']
-        email = request.POST['email']
+        data = json.loads(request.body)
+        url = data['url']
+        code = data['code']
+        email = data['email']
         try:
             myobject = get_object_or_404(Code, pk=url)
-        except (KeyError, Code.DoesNotExist):
-            myobject = Code(pk=url, code=code, email=email)
-            myobject.save(force_insert=True)
-            return HttpResponse(json.dumps({
-                'status': 'Created',
-                'message': 'url created in DB'
-            }))
-        else:
             myobject.code = code
             myobject.save()
             return HttpResponse(json.dumps({
                 'status': 'Successful',
                 'message': 'new code saved'
             }))
+        except:
+            myobject = Code(pk=url, code=code, email=email)
+            myobject.save(force_insert=True)
+            return HttpResponse(json.dumps({
+                'status': 'Created',
+                'message': 'url created in DB'
+            }))            
     else:
         return HttpResponse(json.dumps({
             'status': 'Forbidden',
