@@ -111,3 +111,25 @@ def save_code(request):
             'status': 'Forbidden',
             'message': 'Only POST allowed'
         }))
+
+def check_url(request):
+    # ipdb.set_trace()
+    url = request.GET.get("url",None)
+    if url:
+        try:
+            obj = get_object_or_404(Code, pk=url)
+            return HttpResponse(json.dumps({
+                'status': 'success',
+                'message': 'url found',
+                'code': obj.code
+            }))
+        except:
+            return HttpResponse(json.dumps({
+                'status': 'failed',
+                'message': 'invalid url'
+            }))
+    else:
+        return HttpResponse(json.dumps({
+            'status': 'failed',
+            'message': 'invalid url'
+        }))

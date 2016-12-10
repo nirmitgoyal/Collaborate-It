@@ -19,4 +19,5 @@ urlpatterns = patterns(
     url(r'^api/v1/auth/login/$', LoginView.as_view(), name='login'),
     url(r'^api/v1/auth/logout/$', LogoutView.as_view(), name='logout'),
     url(r'^api/v1/auth/code/$', views.save_code, name='save_code'),
+    url(r'^api/v1/auth/check_url/$', views.check_url, name='check_url'),
 )

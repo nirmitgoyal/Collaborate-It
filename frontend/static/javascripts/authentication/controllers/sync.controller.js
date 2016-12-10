@@ -82,5 +82,24 @@
         function register() {
             // Authentication.register(vm.email, vm.password, vm.username);
         }
+
+        function check_url() {
+            var urlHash = $location.url();
+            urlHash = urlHash.slice(1);
+            console.log(urlHash);
+            $http.get(BASE_URL + '/api/v1/auth/check_url/?url='+urlHash)
+                .then(function(response) {
+                    if(response.data.status == 'success') {
+                        $scope.aceSession.setValue(response.data.code);
+                    }
+                    else {
+                        // $scope.aceSession.setValue("// Your code goes here");
+                    }
+                }, function(error) {
+                    console.error(error);
+                    // $scope.aceSession.setValue("Your code goes here");
+                });
+        }
+        check_url();
     }
 })();
