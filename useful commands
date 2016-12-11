@@ -22,3 +22,7 @@ python manage.py runserver
 
 
 frontend: 8000
+
+
+node app.js 
+redis-server

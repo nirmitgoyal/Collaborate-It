@@ -116,6 +116,9 @@
          */
         function unauthenticate() {
             delete $cookies.authenticatedAccount;
+            $cookieStore.remove('sessionid');
+            $cookieStore.remove('email');
+            $cookieStore.remove('username');
         }
 
         function login(email, password, cb) {
@@ -159,7 +162,7 @@
             // return $http.post(BASE_URL + '/api/v1/auth/logout/')
             //     .then(logoutSuccessFn, logoutErrorFn);
             Authentication.unauthenticate();
-            window.location = '/';
+            window.location = '/login';
             /**
              * @name logoutSuccessFn
              * @desc Unauthenticate and redirect to index with page reload

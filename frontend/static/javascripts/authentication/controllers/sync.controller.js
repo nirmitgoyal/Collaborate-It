@@ -5,14 +5,14 @@
 
     function SyncController($location, $scope, Authentication, md5, $cookies, $cookieStore, $http) {
         var vm = this;
-        // $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
-        vm.register = register;
-        vm.login = login;
+        vm.check_url = check_url;
         var email = $cookieStore.get('email');
-        console.log(email);
-        $scope.url = md5.createHash(email);
-        var BASE_URL = "http://localhost:8001";
+
         activate();
+
+        console.log(email);
+        var BASE_URL = "http://localhost:8001";
+
         // Runs when editor loads
         $scope.aceLoaded = function(_editor) {
             console.log('Ace editor loaded successfully');
@@ -25,22 +25,22 @@
             // });
         };
         //Runs every time the value of the editor is changed
-        $scope.aceChanged = function (_editor) {
+        $scope.aceChanged = function(_editor) {
             console.log(_editor);
             console.log('Ace editor changed');
             // Get Current Value
             $scope.currentValue = $scope.aceSession.getDocument().getValue();
             var value = $scope.currentValue
-            // console.log(value);
+                // console.log(value);
             return $http.post(BASE_URL + '/api/v1/auth/code/', {
-                    code: value,
-                    email: email,
-                    url: $scope.url
-                }, {
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-                    }
-                });
+                code: value,
+                email: email,
+                url: $scope.url
+            }, {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+                }
+            });
             // Set value
             // _editor.getSession().setValue('This text is now in the editor');
             // $scope.aceSession.setValue("message");
@@ -53,23 +53,14 @@
         function activate() {
             // If the user is authenticated, they should not be here.
             if (Authentication.isAuthenticated()) {
-                // $location.url('/' + $scope.url);
-                // $location.url('/' );
-            }
-        }
-        /**
-         * @name register
-         * @desc Register a new user
-         * @memberOf collaborate.authentication.controllers.RegisterController
-         */
-        function login() {
-            console.log(Authentication.login(vm.email, vm.password, function(data) {
-                console.log(data)
-            }));
-        }
+                $scope.url = md5.createHash(email);
 
-        function register() {
-            // Authentication.register(vm.email, vm.password, vm.username);
+                $location.url('/' + $scope.url);
+                // $location.url('/' );
+            } else {
+                $location.url('/login');
+            }
+
         }
 
         function check_url() {
