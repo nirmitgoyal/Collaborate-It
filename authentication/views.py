@@ -102,7 +102,7 @@ def save_code(request):
                 'message': 'new code saved'
             }))
         except:
-            myobject = Code(pk=url, code=code, email=email)
+            myobject = Code(url=url, code=code, email=email)
             myobject.save(force_insert=True)
             return HttpResponse(json.dumps({
                 'status': 'Created',

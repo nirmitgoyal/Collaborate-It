@@ -9,14 +9,14 @@
         .module('collaborate.authentication.services')
         .factory('Authentication', Authentication);
 
-    Authentication.$inject = ['$cookies', '$http','$cookieStore'];
+    Authentication.$inject = ['$cookies', '$http', '$cookieStore'];
 
     /**
      * @namespace Authentication
      * @returns {Factory}
      */
 
-    function Authentication($cookies, $http,$cookieStore) { //a factory
+    function Authentication($cookies, $http, $cookieStore) { //a factory
         /**
          * @name Authentication
          * @desc The Factory to be returned
@@ -64,6 +64,7 @@
              * @desc Log "Epic failure!" to the console
              */
             function registerErrorFn(data, status, headers, config) {
+                console.log(data);
                 console.error('Epic failure!');
             }
         }

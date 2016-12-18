@@ -9,12 +9,12 @@
         .module('collaborate.authentication.controllers')
         .controller('LoginController', LoginController);
 
-    LoginController.$inject = ['$location', '$scope', 'Authentication','$cookies'];
+    LoginController.$inject = ['$location', '$scope', 'Authentication', '$cookies'];
 
     /**
      * @namespace LoginController
      */
-    function LoginController($location, $scope, Authentication,$cookies) {
+    function LoginController($location, $scope, Authentication, $cookies) {
         var vm = this;
 
         vm.login = login;
@@ -31,8 +31,7 @@
             if (Authentication.isAuthenticated()) {
                 // alert("logged in");
                 $location.url('/');
-            }
-            else{
+            } else {
                 // alert("not logged in");
             }
 

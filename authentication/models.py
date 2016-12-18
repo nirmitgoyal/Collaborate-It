@@ -64,7 +64,7 @@ class Code(models.Model):
     code = models.TextField()
     # code = models.CharField(max_length=1  00000)
     url = models.CharField(max_length=100,primary_key=True)
-    email = models.EmailField(unique=True)
+    email = models.EmailField()
 
     def __unicode__(self):
         return self.code
