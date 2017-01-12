@@ -1,11 +1,11 @@
-$ mkvirtualenv collaborate-djangular
-$ pip install -r requirements.txt
-$ sudo npm install -g bower
-$ npm install
-$ sudo bower install --allow-root
-python manage.py makemigrations
-$ python manage.py migrate
-$ python manage.py runserver
+ mkvirtualenv collaborate-djangular
+ sudo pip install -r requirements.txt
+ sudo npm install -g bower
+ npm install
+ sudo bower install --allow-root
+ python manage.py makemigrations
+ python manage.py migrate
+ python manage.py runserver
 
 
 
@@ -18,11 +18,10 @@ delete db file
 
 run :
 workon collaborate-djangular
-python manage.py runserver
+python manage.py makemigrations
+python manage.py migrate
 
-
-frontend: 8000
-
+python manage.py runserver 8001
 
 node app.js 
 redis-server
