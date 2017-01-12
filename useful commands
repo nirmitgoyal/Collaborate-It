@@ -3,6 +3,7 @@
  sudo npm install -g bower
  npm install
  sudo bower install --allow-root
+  source ~/Collaborate-It/collaborate-djangular/bin/activate
  python manage.py makemigrations
  python manage.py migrate
  python manage.py runserver
@@ -25,3 +26,15 @@ python manage.py runserver 8001
 
 node app.js 
 redis-server
+
+
+
+
+
+
+aws instance:
+sudo apt-get install apache2 mysql-server 
+sudo service apache2 restart
+mysql_secure_installation
+sudo apt-get install libmysqlclient-dev
+install redis, etc
