@@ -57,9 +57,13 @@ ROOT_URLCONF = 'collaborate_django_angular_boilerplate.urls'
 
 WSGI_APPLICATION = 'collaborate_django_angular_boilerplate.wsgi.application'
 
+CORS_ALLOW_ALL_HEADERS = True
+
 CORS_ORIGIN_WHITELIST = (
     'localhost:8000',
-    '127.0.0.1:8000'
+    '127.0.0.1:8000',
+    '172.31.4.15:8000',
+    '35.154.118.24:8000'
 )
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases

@@ -21,10 +21,9 @@ run :
 workon collaborate-djangular
 python manage.py makemigrations
 python manage.py migrate
-
 python manage.py runserver 8001
-
-node app.js 
+cd frontend
+node app.js 	
 redis-server
 
 
@@ -38,3 +37,7 @@ sudo service apache2 restart
 mysql_secure_installation
 sudo apt-get install libmysqlclient-dev
 install redis, etc
+
+mysql -u root -p, then
+CREATE USER 'admin'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL ON *.* TO 'admin'@'localhost';
