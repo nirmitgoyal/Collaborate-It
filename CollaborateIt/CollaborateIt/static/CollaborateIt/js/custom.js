@@ -1,5 +1,6 @@
-
 $(document).ready(function() {
+    $.ajaxSetup({ async: true });
+
 
     // contents of the editor at any step
     var editorContent;
@@ -19,7 +20,7 @@ $(document).ready(function() {
     langBoilerplate['C'] = "#include <stdio.h>\nint main(void) {\n  // your code goes here\n    return 0;\n}\n";
     langBoilerplate['CPP'] = "#include <iostream>\nusing namespace std;\n\nint main() {\n   // your code goes here\n    return 0;\n}\n";
     langBoilerplate['JAVA'] = "public class TestDriver {\n    public static void main(String[] args) {\n        // Your code goes here\n    }\n}";
-    langBoilerplate['PHP'] = "<?php\n\n// your code goes here\n";    
+    langBoilerplate['PHP'] = "<?php\n\n// your code goes here\n";
     langBoilerplate['PYTHON'] = "def main():\n    # Your code goes here\n\nif __name__ == \"__main__\":\n    main()";
     //// Initialize Firebase.
     //// TODO: replace with your Firebase project configuration.
@@ -176,10 +177,10 @@ $(document).ready(function() {
         return {
             "C": "c",
             "CPP": "cpp",
-            "JAVA": "java",            
+            "JAVA": "java",
             "PHP": "php",
             "PYTHON": "py"
-            
+
         }[ext] || "txt";
     }
 
