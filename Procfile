@@ -1,1 +1,1 @@
-web: bin/runsvdir-dyno
+web: gunicorn CollaborateIt/CollaborateIt_project.wsgi --log-file=-
