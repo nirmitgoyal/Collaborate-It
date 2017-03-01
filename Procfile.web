@@ -1,2 +1,2 @@
-django: gunicorn CollaborateIt/CollaborateIt_project.wsgi:application --bind 127.0.0.1:$DJANGO_PORT
+django: gunicorn CollaborateIt/CollaborateIt_project.wsgi --bind 127.0.0.1:$DJANGO_PORT
 node: node easyrtc(webRTC)_server/server/server.js
