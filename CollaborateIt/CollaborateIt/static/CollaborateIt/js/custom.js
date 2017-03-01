@@ -1,6 +1,9 @@
 $(document).ready(function() {
+    console.log("custom.js");
     $.ajaxSetup({ async: true });
 
+    var selfEasyrtcid = "";
+    connect(); //call connect for instant messaging
 
     // contents of the editor at any step
     var editorContent;
@@ -742,6 +745,136 @@ $(document).ready(function() {
     // check if input box is to be show
     if ($('#custom-input').val() != "") {
         $('#custom-input-checkbox').click();
+    }
+
+
+
+    // instant messaging code
+
+// var nameValue = document.getElementById("usr").value;
+
+
+    function addToConversation(who, msgType, content) {
+        // Escape html special characters, then add linefeeds.
+        content = content.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        content = content.replace(/\n/g, '<br />');
+        document.getElementById('conversation').innerHTML +=
+            "<b>" + who + ":</b>&nbsp;" + content + "<br />";
+    }
+
+
+    function connect() {
+        easyrtc.setSocketUrl(":8080"); // as in: 
+        //        /home/nirmit/Collaborate-It/CollaborateIt/CollaborateIt/static/CollaborateIt/js/easyrtc.js:
+        // 8270:                self.webSocket = io.connect(serverPath, connectionOptions);
+        // 8273:                     throw "io.connect failed";
+
+        // its correct
+        easyrtc.setPeerListener(addToConversation);
+        easyrtc.setRoomOccupantListener(convertListToButtons);
+        easyrtc.connect("easyrtc.instantMessaging", loginSuccess, loginFailure);
+    }
+
+
+    function convertListToButtons(roomName, occupants, isPrimary) {
+        var otherClientDiv = document.getElementById('otherClients');
+        // if (!otherClientDiv.hasChildNodes()) {
+        //     otherClientDiv.innerHTML = "<em>Nobody else logged in to talk to...</em>";
+        // }
+        // console.log(otherClientDiv);
+        while (otherClientDiv.hasChildNodes()) {
+            otherClientDiv.removeChild(otherClientDiv.lastChild);
+        }
+        var button = document.createElement('button');
+        button.className = "btn btn-primary";
+        var label = document.createTextNode("Send");
+        button.appendChild(label);
+        button.onclick = function() {
+            sendStuffWS(occupants);
+        };
+
+        otherClientDiv.appendChild(button);
+        // if (!otherClientDiv.hasChildNodes()) {
+        //     otherClientDiv.innerHTML = "<em>Nobody else logged in to talk to...</em>";
+        // }
+    }
+
+    // for (var easyrtcid in occupants) {
+
+    //     // var clickEvent = function(easyrtcid) {
+    //     //         console.log("button clicked");
+    //     //         return function() {
+    //     //             console.log("send to " + easyrtcid);
+    //     //             sendStuffWS(easyrtcid);
+    //     //         };
+    //     //     }
+    //     console.log("easyrtcid: " + easyrtcid);
+    //     var button = document.createElement('button');
+    //     button.className = "btn btn-primary";
+    //     button.id = easyrtcid;
+
+    //     // $("button").click(function(easyrtcid) {
+    //     //     return function() {
+    //     //         sendStuffWS(easyrtcid);
+    //     //     };
+    //     // }(easyrtcid));
+    //     // button.onclick = function(easyrtcid) {
+    //     button.onclick = function() {
+
+    //         return function() {
+    //             sendStuffWS(easyrtcid);
+    //         };
+    //     }(easyrtcid);
+    //     // console.log("1");
+    //     // var button_for_click = document.getElementById("easyrtcid");
+    //     // console.log("2");
+    //     // console.log(button_for_click);
+    //     // console.log("3");
+
+    //     // button_for_click.onclick = function(easyrtcid) {
+    //     //     console.log("button clicked");
+    //     //     return function() {
+    //     //         console.log("send to " + easyrtcid);
+    //     //         sendStuffWS(easyrtcid);
+    //     //     };
+    //     // };
+    //     // button.onclick = clickEvent(easyrtcid);
+    //     var label = document.createTextNode("Send to " + easyrtc.idToName(easyrtcid));
+    //     button.appendChild(label);
+    //     otherClientDiv.innerHTML += "<br><br>";
+
+    // otherClientDiv.appendChild(button);
+    // if (!otherClientDiv.hasChildNodes()) {
+    //     otherClientDiv.innerHTML = "<em>Nobody else logged in to talk to...</em>";
+    // }
+
+
+
+    function sendStuffWS(occupants) {
+        // console.log("inside sendStuffWS");
+        var text = document.getElementById('sendMessageText').value;
+        // console.log("text: " + text);
+        if (text.replace(/\s/g, "").length === 0) { // Don't send just whitespace
+            return;
+        }
+
+        for (var easyrtcid in occupants) {
+            easyrtc.sendDataWS(easyrtcid, "message", text);
+        }
+
+        addToConversation("Me", "message", text);
+        document.getElementById('sendMessageText').value = "";
+    }
+
+
+    function loginSuccess(easyrtcid) {
+        selfEasyrtcid = easyrtcid;
+        document.getElementById("iam").innerHTML = "You: " + "<b>" + easyrtcid + "</b>";
+    }
+
+
+    function loginFailure(errorCode, message) {
+        easyrtc.showError(errorCode, message);
     }
 
 
