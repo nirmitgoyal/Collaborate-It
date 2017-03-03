@@ -59,4 +59,7 @@ docs/_build/
 target/
 
 # staticfiles
-staticfiles/
+staticfiles
+
+/node_modules
+npm-debug.log

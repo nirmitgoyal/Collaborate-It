@@ -1,0 +1,1 @@
+web: gunicorn CollaborateIt_project.wsgi --log-file=-

@@ -1,9 +1,27 @@
 $(document).ready(function() {
-    console.log("custom.js");
     $.ajaxSetup({ async: true });
-
     var selfEasyrtcid = "";
-    connect(); //call connect for instant messaging
+    easyrtc.setSocketUrl(":8080"); // as in: 
+
+    $("#demoContainer").hide();
+    $("#sendMessageArea").hide();
+
+    $("#message").click(function() {
+        // easyrtc.disconnect();
+        $("#demoContainer").hide();
+        $("#sendMessageArea").show();
+        connect_message();
+    });
+
+    $("#video").click(function() {
+        // easyrtc.disconnect();
+        $("#demoContainer").show();
+        $("#sendMessageArea").hide();
+        connect_video();
+    });
+
+
+    // connect(); //call connect for instant messaging
 
     // contents of the editor at any step
     var editorContent;
@@ -751,8 +769,7 @@ $(document).ready(function() {
 
     // instant messaging code
 
-// var nameValue = document.getElementById("usr").value;
-
+    // var nameValue = document.getElementById("usr").value;
 
     function addToConversation(who, msgType, content) {
         // Escape html special characters, then add linefeeds.
@@ -763,25 +780,25 @@ $(document).ready(function() {
     }
 
 
-    function connect() {
-        easyrtc.setSocketUrl(":8080"); // as in: 
-        //        /home/nirmit/Collaborate-It/CollaborateIt/CollaborateIt/static/CollaborateIt/js/easyrtc.js:
-        // 8270:                self.webSocket = io.connect(serverPath, connectionOptions);
-        // 8273:                     throw "io.connect failed";
-
-        // its correct
+    function connect_message() {
         easyrtc.setPeerListener(addToConversation);
-        easyrtc.setRoomOccupantListener(convertListToButtons);
-        easyrtc.connect("easyrtc.instantMessaging", loginSuccess, loginFailure);
+        easyrtc.setRoomOccupantListener(convertListToButtons_message);
+        console.log("1");
+        easyrtc.connect("easyrtc.instantMessaging", loginSuccess_message, loginFailure_message);
+        console.log("2");
+
+    }
+
+    function connect_video() {
+        easyrtc.setVideoDims(640, 480);
+        easyrtc.setRoomOccupantListener(convertListToButtons_video);
+        easyrtc.easyApp("easyrtc.audioVideoSimple", "selfVideo", ["callerVideo"], loginSuccess_video, loginFailure_video);
     }
 
 
-    function convertListToButtons(roomName, occupants, isPrimary) {
+    function convertListToButtons_message(roomName, occupants, isPrimary) {
         var otherClientDiv = document.getElementById('otherClients');
-        // if (!otherClientDiv.hasChildNodes()) {
-        //     otherClientDiv.innerHTML = "<em>Nobody else logged in to talk to...</em>";
-        // }
-        // console.log(otherClientDiv);
+
         while (otherClientDiv.hasChildNodes()) {
             otherClientDiv.removeChild(otherClientDiv.lastChild);
         }
@@ -794,60 +811,37 @@ $(document).ready(function() {
         };
 
         otherClientDiv.appendChild(button);
-        // if (!otherClientDiv.hasChildNodes()) {
-        //     otherClientDiv.innerHTML = "<em>Nobody else logged in to talk to...</em>";
-        // }
     }
 
-    // for (var easyrtcid in occupants) {
 
-    //     // var clickEvent = function(easyrtcid) {
-    //     //         console.log("button clicked");
-    //     //         return function() {
-    //     //             console.log("send to " + easyrtcid);
-    //     //             sendStuffWS(easyrtcid);
-    //     //         };
-    //     //     }
-    //     console.log("easyrtcid: " + easyrtcid);
-    //     var button = document.createElement('button');
-    //     button.className = "btn btn-primary";
-    //     button.id = easyrtcid;
+    function convertListToButtons_video(roomName, data, isPrimary) {
+        var otherClientDiv_video = document.getElementById("otherClients_video");
 
-    //     // $("button").click(function(easyrtcid) {
-    //     //     return function() {
-    //     //         sendStuffWS(easyrtcid);
-    //     //     };
-    //     // }(easyrtcid));
-    //     // button.onclick = function(easyrtcid) {
-    //     button.onclick = function() {
+        while (otherClientDiv_video.hasChildNodes()) {
+            otherClientDiv_video.removeChild(otherClientDiv_video.lastChild);
+        }
 
-    //         return function() {
-    //             sendStuffWS(easyrtcid);
-    //         };
-    //     }(easyrtcid);
-    //     // console.log("1");
-    //     // var button_for_click = document.getElementById("easyrtcid");
-    //     // console.log("2");
-    //     // console.log(button_for_click);
-    //     // console.log("3");
+        var button = document.createElement('button');
+        button.className = "btn btn-primary";
+        var label = document.createTextNode("Send your Video");
+        button.appendChild(label);
+        button.onclick = function() {
+            performCall(data);
+        };
 
-    //     // button_for_click.onclick = function(easyrtcid) {
-    //     //     console.log("button clicked");
-    //     //     return function() {
-    //     //         console.log("send to " + easyrtcid);
-    //     //         sendStuffWS(easyrtcid);
-    //     //     };
-    //     // };
-    //     // button.onclick = clickEvent(easyrtcid);
-    //     var label = document.createTextNode("Send to " + easyrtc.idToName(easyrtcid));
-    //     button.appendChild(label);
-    //     otherClientDiv.innerHTML += "<br><br>";
+        otherClientDiv_video.appendChild(button);
+    }
 
-    // otherClientDiv.appendChild(button);
-    // if (!otherClientDiv.hasChildNodes()) {
-    //     otherClientDiv.innerHTML = "<em>Nobody else logged in to talk to...</em>";
-    // }
 
+    function performCall(occupants) {
+        easyrtc.hangupAll();
+
+        var successCB = function() {};
+        var failureCB = function() {};
+        for (var easyrtcid in occupants) {
+            easyrtc.call(easyrtcid, successCB, failureCB);
+        }
+    }
 
 
     function sendStuffWS(occupants) {
@@ -867,13 +861,23 @@ $(document).ready(function() {
     }
 
 
-    function loginSuccess(easyrtcid) {
+    function loginSuccess_message(easyrtcid) {
         selfEasyrtcid = easyrtcid;
         document.getElementById("iam").innerHTML = "You: " + "<b>" + easyrtcid + "</b>";
     }
 
 
-    function loginFailure(errorCode, message) {
+    function loginFailure_message(errorCode, message) {
+        easyrtc.showError(errorCode, message);
+    }
+
+    function loginSuccess_video(easyrtcid) {
+        selfEasyrtcid = easyrtcid;
+        document.getElementById("iam_video").innerHTML = "You: " + easyrtc.cleanId(easyrtcid);
+    }
+
+
+    function loginFailure_video(errorCode, message) {
         easyrtc.showError(errorCode, message);
     }
 

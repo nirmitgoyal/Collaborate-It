@@ -8388,10 +8388,10 @@ var Easyrtc = function() {
             self.showError(self.errCodes.DEVELOPER_ERR, "Your HTML has not included the socket.io.js library");
         }
 
-        if (!preallocatedSocketIo && self.webSocket) {
-            self.showError(self.errCodes.DEVELOPER_ERR, "Attempt to connect when already connected to socket server");
-            return;
-        }
+        // if (!preallocatedSocketIo && self.webSocket) {
+        //     self.showError(self.errCodes.DEVELOPER_ERR, "Attempt to connect when already connected to socket server");
+        //     return;
+        // }
         pc_config = {};
         closedChannel = null;
         oldConfig = {}; // used internally by updateConfiguration

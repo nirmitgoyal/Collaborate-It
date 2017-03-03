@@ -1,1 +1,1 @@
-web: gunicorn CollaborateIt/CollaborateIt_project.wsgi --log-file=-
+web: gunicorn /CollaborateIt/CollaborateIt_project.wsgi --log-file=-

@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Collaborate It | Real Time Code Editor with Compiler </title>
+    <title>Collaborate It | Real Time Code Editor with Compiler and Communication</title>
     <!-- and Communication -->
     <meta name="author" content="nirmit_goyal" />
     <meta property="og:site_name" content=" Collaborate It " />
@@ -166,11 +166,28 @@
                 </div>
                 <!-- col-sm-8 -->
                 <div class="col-md-4">
-                    <h1>Chat</h1>
+                    <h1>Communication</h1>
                     <!-- <div class="form-group">
                         <label for="usr">Name:</label>
                         <input type="text" class="form-control" id="usr">
                     </div> -->
+                    <button type="button" class="btn btn-warning" id="message">Message</button>
+                    <button type="button" class="btn btn-warning" id="video">Video</button>
+                    <div id="demoContainer">
+                        <div id="connectControls">
+                            <div id="iam_video">Not yet connected...</div>
+                            <br />
+                            <!-- <strong>Connected users:</strong> -->
+                            <div id="otherClients_video"></div>
+                        </div>
+                        <div id="videos">
+                            <video autoplay="autoplay" class="easyrtcMirror" id="selfVideo"></video>
+                            <div>
+                                <video autoplay="autoplay" id="callerVideo"></video>
+                            </div>
+                            <!-- each caller video needs to be in it"s own div so it"s close button can be positioned correctly -->
+                        </div>
+                    </div>
                     <div id="sendMessageArea">
                         <div id="iam">Obtaining ID...</div>
                         <!-- <div class="form-group"> -->
@@ -179,11 +196,11 @@
                         <br>
                         <!-- </div> -->
                         <div id="otherClients"></div>
-                    </div>
-                    <br>
-                    <div id="receiveMessageArea">
-                        Received Messages:
-                        <div id="conversation"></div>
+                        <br>
+                        <div id="receiveMessageArea">
+                            <strong><u>Received Messages:</u></strong>
+                            <div id="conversation"></div>
+                        </div>
                     </div>
                 </div>
             </div>
