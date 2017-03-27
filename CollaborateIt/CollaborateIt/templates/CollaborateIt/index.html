@@ -6,7 +6,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Collaborate It | Real Time Code Editor with Compiler and Communication</title>
+    <title>Collaborate It | REAL TIME CODE EDITOR WITH INTERPRETER AND REAL TIME COMMUNICATION
+    </title>
     <!-- and Communication -->
     <meta name="author" content="nirmit_goyal" />
     <meta property="og:site_name" content=" Collaborate It " />
@@ -23,7 +24,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'CollaborateIt/css/custom.css' %}" />
 </head>
 
-<body>
+<body class="container-fluid">
     <div class="container-fluid">
         <!-- Hidden input field containing CSRF token required for making AJAX calls to Django -->
         <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}" />
@@ -54,6 +55,7 @@
                         <li><a href="/history">History</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
+                        <li><a href="https://github.com/nirmitgoyal/Collaborate-It" target="_blank">View Codebase</a></li>
                         <li><a href="https://operational-transformation.github.io/visualization.html" target="_blank">Visualization</a></li>
                         <li><a href="/about">About</a></li>
                         <!--     <li><a href="/"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
@@ -64,7 +66,8 @@
         </nav>
         <div class="container-fluid">
             <div class="row" id="starter-template">
-                <div class="col-md-8">
+                <!-- <div class="col-md-8"> -->
+                <div>
                     <div class="row">
                         <div class="alert alert-info" role="alert">Shareable link:
                             <a href="" target="_blank" id="url" class="alert-link"></a>
@@ -79,7 +82,11 @@
                                         <option value="CPP" selected>C++ </option>
                                         <option value="JAVA">Java </option>
                                         <option value="PYTHON">Python </option>
-                                        <option value="PHP">PHP </option>
+                                        <option value="OBJECTIVEC">Objective C </option>
+                                        <option value="PERL">Perl </option>
+                                        <option value="R">R </option>
+                                        <option value="RUBY">Ruby </option>
+                                        <option value="SCALA">Scala </option>
                                     </select>
                                 </div>
                                 <!-- END of lang-choose -->
@@ -109,6 +116,7 @@
                             </div>
                             <div class="pull-right run-save-panel">
                                 <!-- <span id='copy_code'></span> -->
+                                <button class="btn btn-info" id="compile-code" data-toggle="tooltip" data-placement="top" title="Press Shift+Enter">Compile</button>
                                 <button class="btn btn-success" id="run-code" data-toggle="tooltip" data-placement="top" title="Press Ctrl+Enter">Run</button>
                             </div>
                         </div>
@@ -165,19 +173,14 @@
                     </div>
                 </div>
                 <!-- col-sm-8 -->
-                <div class="col-md-4">
+                <!-- <div class="col-md-4">
                     <h1>Communication</h1>
-                    <!-- <div class="form-group">
-                        <label for="usr">Name:</label>
-                        <input type="text" class="form-control" id="usr">
-                    </div> -->
                     <button type="button" class="btn btn-warning" id="message">Message</button>
                     <button type="button" class="btn btn-warning" id="video">Video</button>
                     <div id="demoContainer">
                         <div id="connectControls">
                             <div id="iam_video">Not yet connected...</div>
                             <br />
-                            <!-- <strong>Connected users:</strong> -->
                             <div id="otherClients_video"></div>
                         </div>
                         <div id="videos">
@@ -185,16 +188,13 @@
                             <div>
                                 <video autoplay="autoplay" id="callerVideo"></video>
                             </div>
-                            <!-- each caller video needs to be in it"s own div so it"s close button can be positioned correctly -->
                         </div>
                     </div>
                     <div id="sendMessageArea">
                         <div id="iam">Obtaining ID...</div>
-                        <!-- <div class="form-group"> -->
                         <label for="comment">Message:</label>
                         <textarea class="form-control" rows="2" id="sendMessageText"></textarea>
                         <br>
-                        <!-- </div> -->
                         <div id="otherClients"></div>
                         <br>
                         <div id="receiveMessageArea">
@@ -202,7 +202,7 @@
                             <div id="conversation"></div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
             <!-- row -->
         </div>

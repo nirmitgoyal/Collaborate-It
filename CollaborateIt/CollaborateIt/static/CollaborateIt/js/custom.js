@@ -43,6 +43,11 @@ $(document).ready(function() {
     langBoilerplate['JAVA'] = "public class TestDriver {\n    public static void main(String[] args) {\n        // Your code goes here\n    }\n}";
     langBoilerplate['PHP'] = "<?php\n\n// your code goes here\n";
     langBoilerplate['PYTHON'] = "def main():\n    # Your code goes here\n\nif __name__ == \"__main__\":\n    main()";
+    langBoilerplate['OBJECTIVEC'] = "#import <objc/objc.h>\n#import <objc/Object.h>\n#import <Foundation/Foundation.h>\n\n@implementation TestObj\nint main()\n{\n  // your code goes here\n    return 0;\n}\n@end";
+    langBoilerplate['PERL'] = "#!/usr/bin/perl\n# your code goes here\n";
+    langBoilerplate['R'] = "# your code goes here";
+    langBoilerplate['RUBY'] = "# your code goes here";
+    langBoilerplate['SCALA'] = "object Main extends App {\n // your code goes here\n}\n";
     //// Initialize Firebase.
     //// TODO: replace with your Firebase project configuration.
     var config = {
@@ -270,7 +275,7 @@ $(document).ready(function() {
                 request_ongoing = false;
 
                 // Change button text when this method is called
-                $("#compile-code").html("Compile it!");
+                $("#compile-code").html("Compile");
 
                 // enable button when this method is called
                 $("#compile-code").prop('disabled', false);
@@ -311,7 +316,7 @@ $(document).ready(function() {
                 request_ongoing = false;
 
                 // Change button text when this method is called
-                $("#compile-code").html("Compile it!");
+                $("#compile-code").html("Compile");
 
                 // enable button when this method is called
                 $("#compile-code").prop('disabled', false);
@@ -746,11 +751,11 @@ $(document).ready(function() {
 
 
     // // when compile-code is clicked
-    // $("#compile-code").click(function() {
+    $("#compile-code").click(function() {
 
-    //     compileCode();
+        compileCode();
 
-    // });
+    });
 
 
     // when run-code is clicked

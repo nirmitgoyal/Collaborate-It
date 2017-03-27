@@ -9,7 +9,7 @@ urlpatterns = [
   # ex: /
   url(r'^$', views.index, name='index'),
   # ex: /compile/
-  # url(r'^compile/$', views.compileCode, name='compile'),
+  url(r'^compile/$', views.compileCode, name='compile'),
   # ex: /run/
   url(r'^run/$', views.runCode, name='run'),
   # ex: /code=ajSkHb/

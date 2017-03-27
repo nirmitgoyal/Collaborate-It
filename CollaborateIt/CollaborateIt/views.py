@@ -20,7 +20,7 @@ DEBUG = (os.environ.get('CollaborateIt_DEBUG') != None)
 # DEBUG=False
 CLIENT_SECRET = '30795ca791b2d0c65bd5e83751dc938057f994a7'
 
-permitted_languages = ["C", "CPP",  "JAVA", "PYTHON", "PHP"]
+permitted_languages = ["C", "CPP",  "JAVA", "PYTHON", "PHP","OBJECTIVEC","PERL","R","RUBY","SCALA"]
 
 
 """
@@ -78,6 +78,33 @@ makes call at HackerEarth's /run/ endpoint and returns the run result as a JsonR
 """
 # @csrf_exempt
 
+def compileCode(request):
+  if request.is_ajax():
+    try:
+      source = request.POST['source']
+      # Handle Empty Source Case
+      source_empty_check(source)
+
+      lang = request.POST['lang']
+      # Handle Invalid Language Case
+      lang_valid_check(lang)
+
+    except KeyError:
+      # Handle case when at least one of the keys (lang or source) is absent
+      missing_argument_error()
+
+    else:
+      compile_data = {
+        'client_secret': CLIENT_SECRET,
+        'async': 0,
+        'source': source,
+        'lang': lang,
+      }
+
+      r = requests.post(COMPILE_URL, data=compile_data)
+      return JsonResponse(r.json(), safe=False)
+  else:
+    return HttpResponseForbidden();
 
 def runCode(request):
     if request.is_ajax():
