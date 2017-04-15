@@ -20,9 +20,9 @@ deploy.config:
 web.main:
   start:
     # nginx: nginx -c /app/etc/nginx.conf
-    django: gunicorn -c /etc/gunicorn.py CollaborateIt_project.wsgi
+    django: gunicorn -c etc/gunicorn.py CollaborateIt_project.wsgi
     # node: npm start #not confirm
-    node: node easyrtc(webRTC)_server/server/server.js
+    node: node easyrtc\(webRTC\)_server/server/server.js
   # add a worker component and give it a "start" command
   # worker.main:
   #   start: node easyrtc(webRTC)_server/server/server.js

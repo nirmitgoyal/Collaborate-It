@@ -1,0 +1,91 @@
+ mkvirtualenv collaborate-djangular
+ sudo -H pip install -r requirements.txt
+ sudo npm install -g bower
+ npm install
+ sudo bower install --allow-root
+  source ~/Collaborate-It/collaborate-djangular/bin/activate
+ python manage.py makemigrations
+ python manage.py migrate
+ python manage.py runserver
+
+
+
+find . -path "*/migrations/*.py" -not -name "__init__.py" -delete
+find . -path "*/migrations/*.pyc"  -delete
+delete db file
+
+
+
+
+run :
+workon collaborate-djangular
+python manage.py makemigrations
+python manage.py migrate
+python manage.py runserver 8001
+cd frontend
+node app.js 	
+redis-server
+
+
+aws instance:
+sudo apt-get install  mysql-server 
+mysql_secure_installation
+sudo apt-get install libmysqlclient-dev
+install redis, etc
+
+mysql -u root -p, then
+CREATE USER 'admin'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL ON *.* TO 'admin'@'localhost';
+
+sudo iptables -A PREROUTING -t nat -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 8000
+
+nohup node app.js &
+ps -ef (to check all background processes)
+kill id_number
+
+
+for heroku:
+heroku create name
+ heroku git:remote -a name
+ git init
+ git add -A
+ git commit -m "a"
+ git push heroku master
+
+debug in heroku:
+heroku logs (in that repo)
+
+local:
+heroku local web
+ssh:
+heroku run bash
+
+heroku open 
+
+
+
+
+i have to replace localhost with public IP every where where localhost is written
+and run python manage.py runserver publicIP:8001
+
+
+
+https://www.hackerearth.com/docs/api/developers/code/v3/
+angular 
+
+sudo -H pip install -r requirements.txt
+sudo apt-get install libcurl4-openssl-dev
+python manage.py collectstatic
+CollaborateIt_DEBUG=true python manage.py runserver
+
+
+RTC:
+easyrtc and angular easyrtc in Collaborate_it old folder
+https://github.com/priologic/easyrtc/blob/master/docs/easyrtc_server_install.md
+https://github.com/priologic/easyrtc/blob/master/docs/easyrtc_client_tutorial.md
+https://github.com/priologic/easyrtc
+https://www.youtube.com/watch?v=jynBIPkoNNY
+https://easyrtc.com/docs/easyrtc_with_other_servers.php
+
+
+to do:
