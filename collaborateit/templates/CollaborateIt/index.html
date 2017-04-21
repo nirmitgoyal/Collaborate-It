@@ -66,106 +66,107 @@
         </nav>
         <div class="container-fluid">
             <div class="row" id="starter-template">
-                <!-- <div class="col-md-8"> -->
-                <div>
-                    <div class="row">
-                        <div class="alert alert-info" role="alert">Shareable link:
-                            <a href="" target="_blank" id="url" class="alert-link"></a>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="left col-md-12">
-                            <div id="editor-topbar">
-                                <div class="lang-choose">
-                                    <select class="form-control" name="lang" id="lang">
-                                        <option value="C">C </option>
-                                        <option value="CPP" selected>C++ </option>
-                                        <option value="JAVA">Java </option>
-                                        <option value="PYTHON">Python </option>
-                                        <option value="OBJECTIVEC">Objective C </option>
-                                        <option value="PERL">Perl </option>
-                                        <option value="R">R </option>
-                                        <option value="RUBY">Ruby </option>
-                                        <option value="SCALA">Scala </option>
-                                    </select>
-                                </div>
-                                <!-- END of lang-choose -->
-                                <div id="settings">
-                                    <a class="cursor no-select" id="download-code">
-                                        <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
-                                    </a>
-                                </div>
-                                <!-- END of settings-pane -->
-                            </div>
-                            <!-- END of editor-topbar -->
-                            <pre id="editor"></pre>
-                            <div id="editor-statusbar"></div>
-                        </div>
-                        <div class="right col-md-4">
-                        </div>
-                    </div>
-                    <!-- END of row -->
-                    <div class="row">
-                        <div class="col-md-12 right" id="show-results">
-                            <div class="pull-left custom-input-panel">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" id="custom-input-checkbox"> Provide Input
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="pull-right run-save-panel">
-                                <!-- <span id='copy_code'></span> -->
-                                <button class="btn btn-info" id="compile-code" data-toggle="tooltip" data-placement="top" title="Press Shift+Enter">Compile</button>
-                                <button class="btn btn-success" id="run-code" data-toggle="tooltip" data-placement="top" title="Press Ctrl+Enter">Run</button>
+                <div class="col-md-8">
+                    <div>
+                        <div class="row">
+                            <div class="alert alert-info" role="alert">Shareable link:
+                                <a href="" target="_blank" id="url" class="alert-link"></a>
                             </div>
                         </div>
-                    </div>
-                    <!-- END of row -->
-                    <div class="row">
-                        <div class="col-md-12 right">
-                            <!-- custom input textarea -->
-                            <div class="custom-input-container">
-                                <textarea id="custom-input" class="nice-textarea" placeholder="Custom input"></textarea>
+                        <div class="row">
+                            <div class="left col-md-12">
+                                <div id="editor-topbar">
+                                    <div class="lang-choose">
+                                        <select class="form-control" name="lang" id="lang">
+                                            <option value="C">C </option>
+                                            <option value="CPP" selected>C++ </option>
+                                            <option value="JAVA">Java </option>
+                                            <option value="PYTHON">Python </option>
+                                            <option value="OBJECTIVEC">Objective C </option>
+                                            <option value="PERL">Perl </option>
+                                            <option value="R">R </option>
+                                            <option value="RUBY">Ruby </option>
+                                            <option value="SCALA">Scala </option>
+                                        </select>
+                                    </div>
+                                    <!-- END of lang-choose -->
+                                    <div id="settings">
+                                        <a class="cursor no-select" id="download-code">
+                                            <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
+                                        </a>
+                                    </div>
+                                    <!-- END of settings-pane -->
+                                </div>
+                                <!-- END of editor-topbar -->
+                                <pre id="editor"></pre>
+                                <div id="editor-statusbar"></div>
+                            </div>
+                            <div class="right col-md-4">
                             </div>
                         </div>
-                    </div>
-                    <!-- END of row -->
-                    <div class="row">
-                        <div class="col-md-12 right">
-                            <div class="output-response-box">
-                                <div class="output-details">
-                                    <div class="output-details-info run-status">
-                                        <div class="key">Run Status:</div>
-                                        <div class="value"></div>
-                                    </div>
-                                    <div class="output-details-info compile-status">
-                                        <div class="key">Compile Status:</div>
-                                        <div class="value"></div>
-                                    </div>
-                                    <div class="output-details-info time-sec">
-                                        <div class="key">Time (sec):</div>
-                                        <div class="value"></div>
-                                    </div>
-                                    <div class="output-details-info memory-kb">
-                                        <div class="key">Memory (KB):</div>
-                                        <div class="value"></div>
+                        <!-- END of row -->
+                        <div class="row">
+                            <div class="col-md-12 right" id="show-results">
+                                <div class="pull-left custom-input-panel">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" id="custom-input-checkbox"> Provide Input
+                                        </label>
                                     </div>
                                 </div>
-                                <div class="output-io">
-                                    <div class="output-error-box">
-                                        <div class="error-key"></div>
-                                        <pre class="error-message"></pre>
+                                <div class="pull-right run-save-panel">
+                                    <!-- <span id='copy_code'></span> -->
+                                    <button class="btn btn-info" id="compile-code" data-toggle="tooltip" data-placement="top" title="Press Shift+Enter">Compile</button>
+                                    <button class="btn btn-success" id="run-code" data-toggle="tooltip" data-placement="top" title="Press Ctrl+Enter">Run</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END of row -->
+                        <div class="row">
+                            <div class="col-md-12 right">
+                                <!-- custom input textarea -->
+                                <div class="custom-input-container">
+                                    <textarea id="custom-input" class="nice-textarea" placeholder="Custom input"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END of row -->
+                        <div class="row">
+                            <div class="col-md-12 right">
+                                <div class="output-response-box">
+                                    <div class="output-details">
+                                        <div class="output-details-info run-status">
+                                            <div class="key">Run Status:</div>
+                                            <div class="value"></div>
+                                        </div>
+                                        <div class="output-details-info compile-status">
+                                            <div class="key">Compile Status:</div>
+                                            <div class="value"></div>
+                                        </div>
+                                        <div class="output-details-info time-sec">
+                                            <div class="key">Time (sec):</div>
+                                            <div class="value"></div>
+                                        </div>
+                                        <div class="output-details-info memory-kb">
+                                            <div class="key">Memory (KB):</div>
+                                            <div class="value"></div>
+                                        </div>
                                     </div>
-                                    <div class="output-io-info output-i-info">
-                                        <div class="key">Input (stdin)</div>
-                                        <pre class="output-text output-i"> </pre>
-                                        <span class="output-empty-message output-i-message"><i>Standard input is empty</i></span>
-                                    </div>
-                                    <div class="output-io-info output-o-info">
-                                        <div class="key">Output (stdout)</div>
-                                        <pre class="output-text output-o"> </pre>
-                                        <span class="output-empty-message output-o-message"><i>Standard output is empty</i></span>
+                                    <div class="output-io">
+                                        <div class="output-error-box">
+                                            <div class="error-key"></div>
+                                            <pre class="error-message"></pre>
+                                        </div>
+                                        <div class="output-io-info output-i-info">
+                                            <div class="key">Input (stdin)</div>
+                                            <pre class="output-text output-i"> </pre>
+                                            <span class="output-empty-message output-i-message"><i>Standard input is empty</i></span>
+                                        </div>
+                                        <div class="output-io-info output-o-info">
+                                            <div class="key">Output (stdout)</div>
+                                            <pre class="output-text output-o"> </pre>
+                                            <span class="output-empty-message output-o-message"><i>Standard output is empty</i></span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -173,7 +174,7 @@
                     </div>
                 </div>
                 <!-- col-sm-8 -->
-                <!-- <div class="col-md-4">
+                <div class="col-md-4">
                     <h1>Communication</h1>
                     <button type="button" class="btn btn-warning" id="message">Message</button>
                     <button type="button" class="btn btn-warning" id="video">Video</button>
@@ -202,7 +203,7 @@
                             <div id="conversation"></div>
                         </div>
                     </div>
-                </div> -->
+                </div>
             </div>
             <!-- row -->
         </div>
