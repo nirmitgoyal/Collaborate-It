@@ -78,9 +78,6 @@ sudo -H pip install -r requirements.txt
 sudo apt-get install nodejs
 sudo apt-get install npm
 apt install nodejs-legacy
-cd easyrtc
-sudo npm install
-cd ..
 sudo pip install --upgrade django==1.9.1
 sudo pip install mongoengine
 sudo pip install whitenoise
@@ -89,9 +86,14 @@ sudo pip install ipdb
 python manage.py collectstatic
 CollaborateIt_DEBUG=true python manage.py runserver
 cd easyrtc
+sudo npm install
 cd server
 node server.js
 
+
+
+service gunicorn restart
+nano /etc/nginx/sites-available/django
 
 
 
