@@ -16,6 +16,8 @@ delete db file
 
 
 
+git rm -r cached .
+
 
 run :
 workon collaborate-djangular
@@ -70,13 +72,27 @@ and run python manage.py runserver publicIP:8001
 
 
 
-https://www.hackerearth.com/docs/api/developers/code/v3/
-angular 
 
-sudo -H pip install -r requirements.txt
 sudo apt-get install libcurl4-openssl-dev
+sudo -H pip install -r requirements.txt
+sudo apt-get install nodejs
+sudo apt-get install npm
+apt install nodejs-legacy
+cd easyrtc
+sudo npm install
+cd ..
+sudo pip install --upgrade django==1.9.1
+sudo pip install mongoengine
+sudo pip install whitenoise
+sudo pip install requests
+sudo pip install ipdb
 python manage.py collectstatic
 CollaborateIt_DEBUG=true python manage.py runserver
+cd easyrtc
+cd server
+node server.js
+
+
 
 
 RTC:
