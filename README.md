@@ -4,5 +4,5 @@ Now, each client can run the code separately too. :)
 
 ## TODO
  - [x] Add feature- Compiling and Running code in several languages
- - [ ] Add text and video chat
+ - [x] Add text and video chat
 
