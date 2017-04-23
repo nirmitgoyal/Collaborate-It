@@ -12,7 +12,7 @@ process.title = "node-easyrtc";
 var app = express();
 app.use('/', express.static('../../Collaborate-It/CollaborateIt/CollaborateIt/templates/CollaborateIt'));
 app.use('/staticFiles', express.static('../../Collaborate-It/CollaborateIt/CollaborateIt/static/CollaborateIt'));
-    // app.use(serveStatic('../../CollaborateIt/templates/CollaborateIt', { 'index': ['index.html'] }));
+// app.use(serveStatic('../../CollaborateIt/templates/CollaborateIt', { 'index': ['index.html'] }));
 
 // Start Express http server on port 8080
 var webServer = http.createServer(app).listen(8080);

@@ -71,32 +71,6 @@ i have to replace localhost with public IP every where where localhost is writte
 and run python manage.py runserver publicIP:8001
 
 
-
-
-sudo apt-get install libcurl4-openssl-dev
-sudo -H pip install -r requirements.txt
-sudo apt-get install nodejs
-sudo apt-get install npm
-apt install nodejs-legacy
-sudo pip install --upgrade django==1.9.1
-sudo pip install mongoengine
-sudo pip install whitenoise
-sudo pip install requests
-sudo pip install ipdb
-python manage.py collectstatic
-CollaborateIt_DEBUG=true python manage.py runserver
-cd easyrtc
-sudo npm install
-cd server
-node server.js
-
-
-
-service gunicorn restart
-nano /etc/nginx/sites-available/django
-
-
-
 RTC:
 easyrtc and angular easyrtc in Collaborate_it old folder
 https://github.com/priologic/easyrtc/blob/master/docs/easyrtc_server_install.md
@@ -106,5 +80,39 @@ https://www.youtube.com/watch?v=jynBIPkoNNY
 https://easyrtc.com/docs/easyrtc_with_other_servers.php
 
 
+
+
+
+final:
+sudo apt-get install libcurl4-openssl-dev
+sudo -H pip install -r requirements.txt
+sudo apt-get install nodejs
+sudo apt-get install npm
+apt install nodejs-legacy
+sudo pip install --upgrade django==1.9.1
+python manage.py collectstatic
+CollaborateIt_DEBUG=true python manage.py runserver
+cd webrtc
+sudo npm install
+cd server
+node server.js
+
+
+whenever i update settings.py or urls.py, etc:
+service gunicorn restart
+
+
+nano /etc/nginx/sites-available/django
+
+rsync -avz -e 'ssh' /path/to/local/dir user@remotehost:/path/to/remote/dir/
+
+sublime on ssh:
+https://hwcdi.com/blogpost/106/Subl_on_remote_Ubuntu
+
+
+
 to do:
-add frontend folder on git
+-add frontend folder on git
+-2 options:
+	1. run node on different droplet
+	2. configure gnicorn and nginx from scratch on "collaborate" droplet, then run nodejs on it
