@@ -111,8 +111,22 @@ https://hwcdi.com/blogpost/106/Subl_on_remote_Ubuntu
 
 
 
+
+
+
+
+gunicorn -b 127.0.0.1:8001 CollaborateIt_project.wsgi:application
+
+changess for domain: in nano /etc/nginx/sites-available/Collaborate-It
+
+sudo service nginx restart
+
+
+
+
+
+
+
 to do:
 -add frontend folder on git
--2 options:
-	1. run node on different droplet
-	2. configure gnicorn and nginx from scratch on "collaborate" droplet, then run nodejs on it
+-when phase 2: show a codechef code
